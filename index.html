@@ -1115,13 +1115,15 @@ document.addEventListener('DOMContentLoaded', () => {
         counter.textContent = `${currentPhoto + 1} / ${galleryImages.length}`;
     }
     function openLightbox(img) {
-        currentPhoto = Math.max(0, galleryImages.indexOf(img));
-        showPhoto(currentPhoto);
-        lightbox.style.display = 'flex';
-        requestAnimationFrame(() => lightbox.classList.add('open'));
-        lightbox.setAttribute('aria-hidden','false');
-        document.body.style.overflow = 'hidden';
+    currentPhoto = Math.max(0, galleryImages.indexOf(img));
+    showPhoto(currentPhoto);
+    lightbox.style.display = 'flex';
+    requestAnimationFrame(() => lightbox.classList.add('open'));
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
     }
+
+    window.openLightbox = openLightbox;
     function closeLightbox() {
         lightbox.classList.remove('open');
         lightbox.setAttribute('aria-hidden','true');
