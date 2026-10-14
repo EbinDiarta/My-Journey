@@ -247,32 +247,30 @@
       }
       #album > p {
         color: var(--muted);
+       .album-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          gap: 1rem;
+          padding: 1rem 0;
       }
-      .album-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 1rem;
-        padding: 1rem 0;
-      }
+      
       .album-item {
-        overflow: hidden;
-        border-radius: 16px;
-        background: var(--card);
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow);
-        transition: transform 0.25s;
+          overflow: hidden;
+          border-radius: 16px;
+          background: var(--card);
+          border: 1px solid var(--border);
+          box-shadow: var(--shadow);
+      }
+      
+      .album-item img {
+          width: 100%;
+          height: 210px;
+          object-fit: cover;
+          display: block;
       }
       .album-item:hover {
         transform: translateY(-4px);
-      }
-      .album-item img {
-        width: 100%;
-        height: 210px;
-        object-fit: cover;
-        display: block;
-        cursor: zoom-in;
-        transition: transform 0.35s;
-      }
+  
       .album-item:hover img {
         transform: scale(1.04);
       }
