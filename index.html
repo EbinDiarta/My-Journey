@@ -1,971 +1,1957 @@
 <!doctype html>
+
 <html lang="id">
+
   <head>
+
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Profil Mahasiswa - Ebin Diarta Pratama</title>
+
     <style>
+
       :root {
+
         --primary: #111827;
+
         --secondary: #6366f1;
+
         --accent: #22c55e;
+
         --bg: #f1f5f9;
+
         --text: #1e293b;
+
         --muted: #64748b;
+
         --card: rgba(255, 255, 255, 0.9);
+
         --border: rgba(148, 163, 184, 0.25);
+
         --shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+
       }
+
       .dark-mode {
+
         --primary: #0f172a;
+
         --secondary: #818cf8;
+
         --accent: #4ade80;
+
         --bg: #020617;
+
         --text: #e2e8f0;
+
         --muted: #94a3b8;
+
         --card: rgba(15, 23, 42, 0.88);
+
         --border: rgba(148, 163, 184, 0.18);
+
         --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+
       }
+
       * {
+
         box-sizing: border-box;
+
         margin: 0;
+
         padding: 0;
+
       }
+
       html {
+
         scroll-behavior: smooth;
+
         scroll-padding-top: 80px;
+
       }
+
       body {
+
         font-family: Inter, "Segoe UI", Tahoma, sans-serif;
+
         line-height: 1.7;
+
         color: var(--text);
+
         background:
+
           radial-gradient(
+
             circle at 10% 0%,
+
             rgba(99, 102, 241, 0.1),
+
             transparent 30%
+
           ),
+
           var(--bg);
+
         transition:
+
           background 0.3s,
+
           color 0.3s;
+
         overflow-x: hidden;
+
       }
+
       nav {
+
         position: sticky;
+
         top: 0;
+
         z-index: 100;
+
         background: rgba(15, 23, 42, 0.94);
+
         backdrop-filter: blur(16px);
+
         padding: 0.8rem 1rem;
+
       }
+
       nav ul {
+
         display: flex;
+
         justify-content: center;
+
         gap: 0.4rem;
+
         list-style: none;
+
         flex-wrap: wrap;
+
       }
+
       nav a {
+
         display: block;
+
         color: #e2e8f0;
+
         text-decoration: none;
+
         font-weight: 600;
+
         padding: 0.5rem 0.85rem;
+
         border-radius: 999px;
+
       }
+
       nav a:hover,
+
       .nav-active {
+
         background: rgba(99, 102, 241, 0.3);
+
         color: white;
+
       }
+
       header {
+
         position: relative;
+
         overflow: hidden;
+
         text-align: center;
+
         color: white;
+
         padding: 5rem 1rem;
+
         background: linear-gradient(135deg, #0f172a, #312e81);
+
         isolation: isolate;
+
       }
+
       header:before,
+
       header:after {
+
         content: "";
+
         position: absolute;
+
         border-radius: 50%;
+
         z-index: -1;
+
         filter: blur(3px);
+
       }
+
       header:before {
+
         width: 320px;
+
         height: 320px;
+
         background: rgba(99, 102, 241, 0.25);
+
         top: -170px;
+
         left: -100px;
+
       }
+
       header:after {
+
         width: 300px;
+
         height: 300px;
+
         background: rgba(34, 197, 94, 0.15);
+
         right: -100px;
+
         bottom: -170px;
+
       }
+
       .profile-img {
+
         width: 180px;
+
         height: 180px;
+
         object-fit: cover;
+
         border-radius: 50%;
+
         border: 5px solid white;
+
         box-shadow: 0 15px 45px #0006;
+
         margin-bottom: 1rem;
+
         cursor: zoom-in;
+
       }
+
       header h1 {
+
         font-size: clamp(2rem, 5vw, 3.4rem);
+
         line-height: 1.2;
+
         margin: 0.5rem 0;
+
       }
+
       header p {
+
         color: #dbeafe;
+
         margin: 0.6rem auto;
+
         max-width: 700px;
+
       }
+
       .hero-badges {
+
         display: flex;
+
         justify-content: center;
+
         gap: 0.6rem;
+
         flex-wrap: wrap;
+
         margin: 1.2rem;
+
       }
+
       .hero-badges span {
+
         background: #ffffff16;
+
         border: 1px solid #ffffff30;
+
         border-radius: 999px;
+
         padding: 0.4rem 0.8rem;
+
         font-size: 0.85rem;
+
       }
+
       .btn {
+
         display: inline-block;
+
         background: linear-gradient(135deg, var(--secondary), #8b5cf6);
+
         color: white;
+
         padding: 0.7rem 1.2rem;
+
         border: 0;
+
         border-radius: 999px;
+
         text-decoration: none;
+
         font-weight: 700;
+
         cursor: pointer;
+
       }
+
       .theme-toggle,
+
       .nav-toggle {
+
         border: 0;
+
         border-radius: 50%;
+
         width: 44px;
+
         height: 44px;
+
         cursor: pointer;
+
         color: white;
+
         background: #ffffff20;
+
         font-size: 1.1rem;
+
       }
+
       .theme-toggle {
+
         position: absolute;
+
         right: 1rem;
+
         top: 1rem;
+
       }
+
       .nav-toggle {
+
         display: none;
+
         position: fixed;
+
         left: 1rem;
+
         top: 1rem;
+
         z-index: 200;
+
         background: #6366f1;
+
       }
+
       .container {
+
         max-width: 1100px;
+
         margin: auto;
+
         padding: 0 1.25rem;
+
       }
+
       section {
+
         padding: 4rem 0;
+
         border-bottom: 1px solid var(--border);
+
       }
+
       h2 {
+
         text-align: center;
+
         font-size: clamp(1.6rem, 3vw, 2.2rem);
+
         margin-bottom: 1.8rem;
+
       }
+
       h2:after {
+
         content: "";
+
         display: block;
+
         width: 55px;
+
         height: 4px;
+
         border-radius: 5px;
+
         margin: 0.6rem auto;
+
         background: linear-gradient(90deg, var(--secondary), var(--accent));
+
       }
+
       h3 {
+
         color: var(--secondary);
+
         margin-bottom: 0.5rem;
+
       }
+
       p {
+
         margin-bottom: 1rem;
+
       }
+
       #about p {
+
         text-align: justify;
+
         background: var(--card);
+
         border: 1px solid var(--border);
+
         border-radius: 16px;
+
         padding: 1rem 1.2rem;
+
       }
+
       .education-item,
+
       .skill-card {
+
         background: var(--card);
+
         border: 1px solid var(--border);
+
         border-radius: 16px;
+
         padding: 1.4rem;
+
         box-shadow: var(--shadow);
+
         margin-bottom: 1rem;
+
       }
+
       .education-item {
+
         max-width: 850px;
+
         margin: 0 auto 1rem;
+
       }
+
       .skills-container {
+
         display: grid;
+
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
         gap: 1rem;
+
       }
+
       .skill-card {
+
         margin: 0;
+
         transition: transform 0.25s;
+
       }
+
       .skill-card:hover {
+
         transform: translateY(-5px);
+
       }
+
       #album {
+  text-align: center;
+}
+
+#album > p {
+  color: var(--muted);
+}
+
+.album-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem 0;
+}
+
+.album-item {
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s;
+}
+
+.album-item img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  display: block;
+  cursor: zoom-in;
+  transition: transform 0.25s;
+}
+
+.album-item:hover {
+  transform: translateY(-4px);
+}
+
+.album-item:hover img {
+  transform: scale(1.04);
+}
+
+.photo-desc {
+  font-weight: 600;
+  text-align: center;
+  padding: 0.8rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .album-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  .album-item img {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .album-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .album-item img {
+    height: 135px;
+  }
+
+  .photo-desc {
+    font-size: 0.82rem;
+    padding: 0.65rem 0.35rem;
+  }
+}
+
+footer {
+
         text-align: center;
-      }
-      #album > p {
-        color: var(--muted);
-       .album-container {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-          gap: 1rem;
-          padding: 1rem 0;
-      }
-      
-      .album-item {
-          overflow: hidden;
-          border-radius: 16px;
-          background: var(--card);
-          border: 1px solid var(--border);
-          box-shadow: var(--shadow);
-      }
-      
-      .album-item img {
-          width: 100%;
-          height: 210px;
-          object-fit: cover;
-          display: block;
-      }
-      .album-item:hover {
-        transform: translateY(-4px);
-  
-      .album-item:hover img {
-        transform: scale(1.04);
-      }
-      .photo-desc {
-        font-weight: 600;
-        text-align: center;
-        padding: 0.8rem;
-        margin: 0;
-      }
-      footer {
-        text-align: center;
+
         color: #e2e8f0;
+
         background: linear-gradient(135deg, #0f172a, #1e1b4b);
+
         padding: 3rem 1rem;
+
       }
+
       footer h2 {
+
         color: white;
+
       }
+
       footer p {
+
         color: #cbd5e1;
+
       }
+
       footer a {
+
         color: white;
+
         margin: 0.3rem;
+
       }
+
       .contact-actions {
+
         display: flex;
+
         justify-content: center;
+
         gap: 0.7rem;
+
         flex-wrap: wrap;
+
         margin: 1rem;
+
       }
+
       .social-links {
+
         margin: 1.5rem 0;
+
       }
+
       .back-top {
+
         position: fixed;
+
         right: 20px;
+
         bottom: 20px;
+
         width: 45px;
+
         height: 45px;
+
         border: 0;
+
         border-radius: 50%;
+
         background: #6366f1;
+
         color: white;
+
         font-size: 1.3rem;
+
         cursor: pointer;
+
         opacity: 0;
+
         visibility: hidden;
+
         transition: 0.2s;
+
         z-index: 50;
+
       }
+
       .back-top.visible {
+
         opacity: 1;
+
         visibility: visible;
+
       }
+
       /* Galeri foto / lightbox */
+
       #lightbox {
+
         position: fixed;
+
         inset: 0;
+
         z-index: 9999;
+
         display: none;
+
         align-items: center;
+
         justify-content: center;
+
         padding: 70px 70px 60px;
+
         background: rgba(0, 0, 0, 0.94);
+
         opacity: 0;
+
         transition: opacity 0.22s ease;
+
       }
+
       #lightbox.open {
+
         opacity: 1;
+
       }
+
       #lightbox-img {
+
         display: block;
+
         max-width: 100%;
+
         max-height: calc(100vh - 130px);
+
         width: auto;
+
         height: auto;
+
         object-fit: contain;
+
         border-radius: 8px;
+
         box-shadow: 0 0 40px #000b;
+
         user-select: none;
+
         animation: zoomIn 0.25s ease;
+
       }
+
       @keyframes zoomIn {
+
         from {
+
           transform: scale(0.82);
+
           opacity: 0.3;
+
         }
+
         to {
+
           transform: scale(1);
+
           opacity: 1;
+
         }
+
       }
+
       .lightbox-close,
+
       .lightbox-btn {
+
         position: absolute;
+
         display: flex;
+
         align-items: center;
+
         justify-content: center;
+
         border: 1px solid #ffffff45;
+
         border-radius: 50%;
+
         background: #ffffff20;
+
         color: white;
+
         cursor: pointer;
+
         backdrop-filter: blur(8px);
+
         transition:
+
           background 0.2s,
+
           transform 0.2s;
+
       }
+
       .lightbox-close {
+
         top: 18px;
+
         right: 22px;
+
         width: 44px;
+
         height: 44px;
+
         font-size: 1.35rem;
+
         z-index: 2;
+
       }
+
       .lightbox-btn {
+
         top: 50%;
+
         transform: translateY(-50%);
+
         width: 48px;
+
         height: 48px;
+
         font-size: 2rem;
+
       }
+
       .lightbox-close:hover,
+
       .lightbox-btn:hover {
+
         background: #ffffff40;
+
       }
+
       #prevPhoto {
+
         left: 20px;
+
       }
+
       #nextPhoto {
+
         right: 20px;
+
       }
+
       .lightbox-counter {
+
         position: absolute;
+
         bottom: 18px;
+
         left: 50%;
+
         transform: translateX(-50%);
+
         color: white;
+
         background: #0008;
+
         padding: 0.35rem 0.85rem;
+
         border-radius: 999px;
+
         font-size: 0.9rem;
+
       }
+
       body.lightbox-open {
+
         overflow: hidden;
+
       }
+
       @media (max-width: 768px) {
+
         .nav-toggle {
+
           display: block;
+
         }
+
         nav ul {
+
           position: fixed;
+
           top: 0;
+
           left: -100%;
+
           height: 100vh;
+
           width: min(82%, 320px);
+
           background: #0f172af7;
+
           display: flex;
+
           flex-direction: column;
+
           justify-content: center;
+
           align-items: center;
+
           transition: left 0.25s;
+
           gap: 0.6rem;
+
         }
+
         nav ul.active {
+
           left: 0;
+
         }
+
         nav a {
+
           padding: 0.7rem 1.2rem;
+
         }
+
         header {
+
           padding: 5rem 1rem 3.5rem;
+
         }
+
         .profile-img {
+
           width: 150px;
+
           height: 150px;
+
         }
+
         .container {
+
           padding: 0 1rem;
+
         }
+
         section {
+
           padding: 3rem 0;
+
         }
+
         .album-container {
+
           grid-template-columns: repeat(2, minmax(0, 1fr));
+
           gap: 0.7rem;
+
         }
+
         .album-item img {
+
           height: 160px;
+
         }
+
         #lightbox {
+
           padding: 65px 48px 55px;
+
         }
+
         #lightbox-img {
+
           max-height: calc(100vh - 125px);
+
           max-width: 100%;
+
         }
+
         .lightbox-btn {
+
           width: 38px;
+
           height: 38px;
+
           font-size: 1.6rem;
+
         }
+
         #prevPhoto {
+
           left: 5px;
+
         }
+
         #nextPhoto {
+
           right: 5px;
+
         }
+
         .lightbox-close {
+
           top: 10px;
+
           right: 10px;
+
           width: 40px;
+
           height: 40px;
+
         }
+
       }
+
       @media (max-width: 480px) {
+
         .album-container {
+
           grid-template-columns: repeat(2, minmax(0, 1fr));
+
         }
+
         .album-item img {
+
           height: 135px;
+
         }
+
         .photo-desc {
+
           font-size: 0.82rem;
+
           padding: 0.65rem 0.35rem;
+
         }
+
         #lightbox {
+
           padding: 60px 40px 55px;
+
         }
+
       }
+
       @media (prefers-reduced-motion: reduce) {
+
         *,
+
         *:before,
+
         *:after {
+
           scroll-behavior: auto !important;
+
           animation-duration: 0.01ms !important;
+
           transition-duration: 0.01ms !important;
+
         }
+
       }
+
     </style>
+
   </head>
+
   <body>
+
     <button
+
       class="nav-toggle"
+
       id="navToggle"
+
       aria-label="Buka menu"
+
       aria-expanded="false"
+
     >
+
       ☰
+
     </button>
+
     <nav>
+
       <ul id="navMenu">
+
         <li><a href="#about">Tentang</a></li>
+
         <li><a href="#education">Pendidikan</a></li>
+
         <li><a href="#skills">Keterampilan</a></li>
+
         <li><a href="#album">Momen</a></li>
+
         <li><a href="#contact">Kontak</a></li>
+
       </ul>
+
     </nav>
+
     <header>
+
       <button class="theme-toggle" id="themeToggle" aria-label="Ganti tema">
+
         ☀️
+
       </button>
+
       <img
+
         src="GLP.jpg"
+
         alt="Foto profil mahasiswa"
+
         class="profile-img gallery-photo"
+
       />
+
       <h1>Ebin Diarta Pratama</h1>
+
       <p><strong>Informatika | Universitas Jambi</strong></p>
+
       <p>
+
         “Kegagalan bukanlah akhir, melainkan awal perjalanan menuju kesuksesan.”
+
       </p>
+
       <div class="hero-badges">
+
         <span>💻 Web Development</span><span>🎮 Game Development</span
+
         ><span>🚀 Always Learning</span>
+
       </div>
+
       <a href="#contact" class="btn">Hubungi Saya</a>
+
     </header>
+
     <main class="container">
+
       <section id="about">
+
         <h2>Tentang Saya</h2>
+
         <p>
+
           Saya Ebin Diarta Pratama, mahasiswa Informatika di Universitas Jambi
+
           dan lulusan MAN 1 Kerinci yang berasal dari Desa Bunga Tanjung,
+
           Kabupaten Kerinci, Provinsi Jambi.
+
         </p>
+
         <p>
+
           Ketertarikan saya pada teknologi dan komputer mendorong saya untuk
+
           mendalami bidang Informatika, khususnya web development dan game
+
           development. Saya senang mempelajari bagaimana website dirancang dan
+
           dikembangkan, mulai dari antarmuka hingga logika sistemnya.
+
         </p>
+
         <p>
+
           Di luar kegiatan akademik, saya belajar pemrograman melalui berbagai
+
           situs dan platform online. Saya tertarik mempelajari HTML, CSS,
+
           JavaScript, PHP, Python, dan bahasa lainnya serta membuat proyek
+
           seperti website, kalkulator, dan aplikasi.
+
         </p>
+
         <p>
+
           Saya juga suka bermain eFootball Mobile dan pernah mengikuti turnamen
+
           online. Pengalaman bekerja sama dalam tim mengajarkan saya tentang
+
           strategi, komunikasi, kepemimpinan, dan tanggung jawab.
+
         </p>
+
         <p>
+
           Masa sekolah di MAN 1 Kerinci, khususnya bersama teman-teman MIA 2,
+
           menjadi salah satu kenangan terbaik dalam hidup saya. Kini saya
+
           melanjutkan perjalanan di dunia perkuliahan, bertemu orang-orang baru,
+
           dan terus belajar dari setiap pengalaman.
+
         </p>
+
       </section>
+
       <section id="education">
+
         <h2>Pendidikan</h2>
+
         <div class="education-item">
+
           <h3>Universitas Jambi</h3>
+
           <p>Informatika | 2025 - Sekarang</p>
+
           <p>Diterima melalui jalur SNBP</p>
+
         </div>
+
         <div class="education-item">
+
           <h3>MAN 1 Kerinci</h3>
+
           <p>Jurusan IPA | 2022 - 2025</p>
+
           <p>Lulus dengan predikat nilai yang memuaskan</p>
+
         </div>
+
       </section>
+
       <section id="skills">
+
         <h2>Keterampilan</h2>
+
         <div class="skills-container">
+
           <div class="skill-card">
+
             <h3>Programming</h3>
+
             <p>HTML, CSS, JavaScript, PHP, Python, C#, dan lainnya.</p>
+
             <p>Proyek: website, game, dan aplikasi.</p>
+
           </div>
+
           <div class="skill-card">
+
             <h3>Web Development</h3>
+
             <p>HTML, CSS, JavaScript, PHP.</p>
+
             <p>Proyek: website pribadi dan website keuangan masjid.</p>
+
           </div>
+
           <div class="skill-card">
+
             <h3>Game Development</h3>
+
             <p>Unity Engine.</p>
+
             <p>Proyek: Cleaning The Trash, Tubby Leaf, Flappy Planes.</p>
+
           </div>
+
           <div class="skill-card">
+
             <h3>Gamers</h3>
+
             <p>eFootball Mobile.</p>
+
             <p>Pencapaian: Best Player dan Top Score turnamen online.</p>
+
           </div>
+
           <div class="skill-card">
+
             <h3>Lainnya</h3>
+
             <p>Word, Excel, PowerPoint, dan lainnya.</p>
+
             <p>Proyek: makalah, tugas, dan presentasi.</p>
+
           </div>
+
         </div>
+
       </section>
+
       <section id="album">
+
         <h2>Best Moment</h2>
+
         <p><em>Klik foto untuk memperbesar dan melihat galeri.</em></p>
+
         <div class="album-container">
+
           <div class="album-item">
+
             <img class="gallery-photo" src="portofolio.jpg" alt="Travel Mode" />
+
             <p class="photo-desc">Travel Mode</p>
+
           </div>
+
           <div class="album-item">
+
             <img class="gallery-photo" src="MP.jpg" alt="My Greatest Support" />
+
             <p class="photo-desc">My Greatest Support</p>
+
           </div>
+
           <div class="album-item">
+
             <img class="gallery-photo" src="B.png" alt="Game Face On" />
+
             <p class="photo-desc">Game Face On</p>
+
           </div>
-        <div class="album-item"><img class="gallery-photo" src="bola/f1.jpeg" alt="Breaking Fast Together"/><p class="photo-desc">Futsal</p>
-        <div class="album-item"><img class="gallery-photo" src="bola/f2.jpeg" alt="Breaking Fast Together"/><p class="photo-desc">Futsal</p>
-        <div class="album-item"><img class="gallery-photo" src="bola/f3.jpeg" alt="Breaking Fast Together"/><p class="photo-desc">Futsal</p>
-        <div class="album-item"><img class="gallery-photo" src="bola/f4.jpeg" alt="Breaking Fast Together"/><p class="photo-desc">Futsal</p>
-        <div class="album-item"><img class="gallery-photo" src="bola/f5.jpeg" alt="Breaking Fast Together"/><p class="photo-desc">Futsal</p>
-        <div class="album-item"><img class="gallery-photo" src="bola/f6.jpeg" alt="Breaking Fast Together"/><p class="photo-desc">Futsal</p>
-        <div class="album-item"><img class="gallery-photo" src="bola/f7.jpeg" alt="Breaking Fast Together"/><p class="photo-desc">Futsal</p>
-        <div class="album-item"><img class="gallery-photo" src="bola/f8.jpeg" alt="Breaking Fast Together"/><p class="photo-desc">Futsal</p>
-        <div class="album-item"><img class="gallery-photo" src="bola/f9.jpeg" alt="Breaking Fast Together"/><p class="photo-desc">Futsal</p>
-        <div class="album-item"><img class="gallery-photo" src="bola/f10.jpeg" alt="Breaking Fast Together"/><p class="photo-desc">Futsal</p>
-        <div class="album-item"><img class="gallery-photo" src="bola/f11.jpeg" alt="Breaking Fast Together"/><p class="photo-desc">Futsal</p>
           <div class="album-item">
-            <img
-              class="gallery-photo"
-              src="first.jpg"
+            <img class="gallery-photo" src="bola/f1.jpeg" alt="Futsal 1" />
+            <p class="photo-desc">Futsal</p>
+          </div>
+          <div class="album-item">
+            <img class="gallery-photo" src="bola/f2.jpeg" alt="Futsal 2" />
+            <p class="photo-desc">Futsal</p>
+          </div>
+          <div class="album-item">
+            <img class="gallery-photo" src="bola/f3.jpeg" alt="Futsal 3" />
+            <p class="photo-desc">Futsal</p>
+          </div>
+          <div class="album-item">
+            <img class="gallery-photo" src="bola/f4.jpeg" alt="Futsal 4" />
+            <p class="photo-desc">Futsal</p>
+          </div>
+          <div class="album-item">
+            <img class="gallery-photo" src="bola/f5.jpeg" alt="Futsal 5" />
+            <p class="photo-desc">Futsal</p>
+          </div>
+          <div class="album-item">
+            <img class="gallery-photo" src="bola/f6.jpeg" alt="Futsal 6" />
+            <p class="photo-desc">Futsal</p>
+          </div>
+          <div class="album-item">
+            <img class="gallery-photo" src="bola/f7.jpeg" alt="Futsal 7" />
+            <p class="photo-desc">Futsal</p>
+          </div>
+          <div class="album-item">
+            <img class="gallery-photo" src="bola/f8.jpeg" alt="Futsal 8" />
+            <p class="photo-desc">Futsal</p>
+          </div>
+          <div class="album-item">
+            <img class="gallery-photo" src="bola/f9.jpeg" alt="Futsal 9" />
+            <p class="photo-desc">Futsal</p>
+          </div>
+          <div class="album-item">
+            <img class="gallery-photo" src="bola/f10.jpeg" alt="Futsal 10" />
+            <p class="photo-desc">Futsal</p>
+          </div>
+          <div class="album-item">
+            <img class="gallery-photo" src="bola/f11.jpeg" alt="Futsal 11" />
+            <p class="photo-desc">Futsal</p>
+          </div>
+          <div class="album-item">
+            <img class="gallery-photo" src="first.jpg" alt="From First Meet to Real Friends"
+
               alt="From First Meet to Real Friends"
+
             />
+
             <p class="photo-desc">From First Meet to Real Friends</p>
+
           </div>
+
           <div class="album-item">
+
             <img class="gallery-photo" src="voly.jpg" alt="Boys on the Court" />
+
             <p class="photo-desc">Boys' on the Court</p>
+
           </div>
+
           <div class="album-item">
+
             <img
+
               class="gallery-photo"
+
               src="Expo.jpg"
+
               alt="Stepping Forward for the First Time"
+
             />
+
             <p class="photo-desc">Stepping Forward for the First Time</p>
+
           </div>
+
           <div class="album-item">
+
             <img
+
               class="gallery-photo"
+
               src="Doa.jpg"
+
               alt="From Nervous to Confident"
+
             />
+
             <p class="photo-desc">From Nervous to Confident</p>
+
           </div>
+
           <div class="album-item">
+
             <img
+
               class="gallery-photo"
+
               src="BRS.JPG"
+
               alt="Standing With Respect"
+
             />
+
             <p class="photo-desc">Standing With Respect</p>
+
           </div>
+
           <div class="album-item">
+
             <img class="gallery-photo" src="JU.JPG" alt="Leading the Victory" />
+
             <p class="photo-desc">Leading the Victory</p>
+
           </div>
+
           <div class="album-item">
+
             <img
+
               class="gallery-photo"
+
               src="IP.jpg"
+
               alt="Symbol of Our Effort"
+
             />
+
             <p class="photo-desc">Symbol of Our Effort</p>
+
           </div>
+
           <div class="album-item">
+
             <img class="gallery-photo" src="MIA2.jpg" alt="Still a Family" />
+
             <p class="photo-desc">Still a Family</p>
+
           </div>
+
           <div class="album-item">
+
             <img
+
               class="gallery-photo"
+
               src="PM2.jpg"
+
               alt="All Class Achievement"
+
             />
+
             <p class="photo-desc">All Class Achievement</p>
+
           </div>
+
           <div class="album-item">
+
             <img class="gallery-photo" src="MAN.JPG" alt="Winners Circle" />
+
             <p class="photo-desc">Winners' Circle</p>
+
           </div>
+
           <div class="album-item">
+
             <img class="gallery-photo" src="T.jpg" alt="Stage Moment" />
+
             <p class="photo-desc">Stage Moment</p>
+
           </div>
+
           <div class="album-item">
+
             <img
+
               class="gallery-photo"
+
               src="Tc.jpg"
+
               alt="Memories with Teachers"
+
             />
+
             <p class="photo-desc">Memories with Teachers</p>
+
           </div>
+
           <div class="album-item">
+
             <img class="gallery-photo" src="C2.jpg" alt="Boys Last Chapter" />
+
             <p class="photo-desc">Boys' Last Chapter</p>
+
           </div>
+
           <div class="album-item">
+
             <img
+
               class="gallery-photo"
+
               src="CBT.jpg"
+
               alt="Homegrown Friendship"
+
             />
+
             <p class="photo-desc">Homegrown Friendship</p>
+
           </div>
+
           <div class="album-item">
+
             <img class="gallery-photo" src="vn.jpeg" alt="Von Neuman" />
+
             <p class="photo-desc">Von Neuman</p>
+
           </div>
+
           <div class="album-item">
+
             <img
+
               class="gallery-photo"
+
               src="Enginering.jpeg"
+
               alt="Engineering"
+
             />
+
             <p class="photo-desc">Engineering</p>
+
           </div>
+
           <div class="album-item">
+
             <img class="gallery-photo" src="vn1.jpeg" alt="Von Neuman" />
+
             <p class="photo-desc">Von Neuman</p>
+
           </div>
+
           <div class="album-item">
+
             <img class="gallery-photo" src="Three.jpeg" alt="The Three" />
+
             <p class="photo-desc">The Three</p>
+
           </div>
+
           <div class="album-item"><img class="gallery-photo" src="BT.jpg" alt="Breaking Fast Together"/><p class="photo-desc">Breaking Fast Together</p>
+
           </div>
+
         </div>
+
       </section>
+
     </main>
+
     <footer id="contact">
+
       <h2>Hubungi Saya</h2>
+
       <div class="contact-actions">
+
         <a class="btn" href="mailto:ebindiartapratama@gmail.com">✉️ Email</a
+
         ><a
+
           class="btn"
+
           href="https://wa.me/6285273002241"
+
           target="_blank"
+
           rel="noopener"
+
           >💬 WhatsApp</a
+
         >
+
       </div>
+
       <div class="social-links">
+
         <a
+
           href="https://www.instagram.com/ebindiarta/"
+
           target="_blank"
+
           rel="noopener"
+
           >Instagram</a
+
         >
+
         <p>Alamat: Bunga Tanjung, Kabupaten Kerinci, Provinsi Jambi</p>
+
       </div>
+
       <p>© 2026 Ebin Diarta Pratama. All rights reserved.</p>
+
     </footer>
+
     <!-- Lightbox -->
+
     <div
+
       id="lightbox"
+
       aria-hidden="true"
+
       role="dialog"
+
       aria-modal="true"
+
       aria-label="Galeri foto"
+
     >
+
       <button
+
         class="lightbox-close"
+
         id="lightboxClose"
+
         aria-label="Tutup galeri"
+
       >
+
         ✕
+
       </button>
+
       <button class="lightbox-btn" id="prevPhoto" aria-label="Foto sebelumnya">
+
         ‹
+
       </button>
+
       <img id="lightbox-img" alt="Pratinjau foto besar" />
+
       <button class="lightbox-btn" id="nextPhoto" aria-label="Foto berikutnya">
+
         ›
+
       </button>
+
       <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
+
     </div>
+
     <button class="back-top" id="backTop" aria-label="Kembali ke atas">
+
       ↑
+
     </button>
+
     <script>
+
       document.addEventListener("DOMContentLoaded", () => {
+
         const body = document.body;
+
         const themeToggle = document.getElementById("themeToggle");
+
         const navToggle = document.getElementById("navToggle");
+
         const navMenu = document.getElementById("navMenu");
+
         const backTop = document.getElementById("backTop");
 
+
+
         // Mode gelap/terang
+
         try {
+
           const savedTheme = localStorage.getItem("darkMode") === "true";
+
           body.classList.toggle("dark-mode", savedTheme);
+
           themeToggle.textContent = savedTheme ? "🌙" : "☀️";
+
         } catch (_) {}
+
         themeToggle.addEventListener("click", () => {
+
           const dark = body.classList.toggle("dark-mode");
+
           themeToggle.textContent = dark ? "🌙" : "☀️";
+
           try {
+
             localStorage.setItem("darkMode", String(dark));
+
           } catch (_) {}
+
         });
+
+
 
         // Menu responsif
+
         navToggle.addEventListener("click", () => {
+
           const open = navMenu.classList.toggle("active");
+
           navToggle.textContent = open ? "✕" : "☰";
+
           navToggle.setAttribute("aria-expanded", String(open));
+
         });
+
         navMenu.querySelectorAll("a").forEach((a) =>
+
           a.addEventListener("click", () => {
+
             navMenu.classList.remove("active");
+
             navToggle.textContent = "☰";
+
             navToggle.setAttribute("aria-expanded", "false");
+
           }),
+
         );
+
+
 
         // Scroll halus
+
         document.querySelectorAll('a[href^="#"]').forEach((a) =>
+
           a.addEventListener("click", (e) => {
+
             const target = document.querySelector(a.getAttribute("href"));
+
             if (target) {
+
               e.preventDefault();
+
               target.scrollIntoView({ behavior: "smooth", block: "start" });
+
             }
+
           }),
+
         );
+
+
 
         // Lightbox / galeri foto
+
         const photos = [...document.querySelectorAll(".gallery-photo")].filter(
+
           (img) => img.getAttribute("src"),
+
         );
+
         const lightbox = document.getElementById("lightbox");
+
         const largeImg = document.getElementById("lightbox-img");
+
         const counter = document.getElementById("lightboxCounter");
+
         const closeBtn = document.getElementById("lightboxClose");
+
         const prevBtn = document.getElementById("prevPhoto");
+
         const nextBtn = document.getElementById("nextPhoto");
+
         let current = 0,
+
           previousFocus = null;
 
+
+
         function showPhoto(index) {
+
           if (!photos.length) return;
+
           current = (index + photos.length) % photos.length;
+
           const photo = photos[current];
+
           largeImg.src = photo.currentSrc || photo.src;
+
           largeImg.alt = photo.alt || "Foto galeri";
+
           counter.textContent = `${current + 1} / ${photos.length}`;
+
           prevBtn.hidden = photos.length < 2;
+
           nextBtn.hidden = photos.length < 2;
+
         }
+
         function openLightbox(photo) {
+
           const index = photos.indexOf(photo);
+
           if (index < 0) return;
+
           previousFocus = document.activeElement;
+
           showPhoto(index);
+
           lightbox.style.display = "flex";
+
           body.classList.add("lightbox-open");
+
           lightbox.setAttribute("aria-hidden", "false");
+
           requestAnimationFrame(() => lightbox.classList.add("open"));
+
           closeBtn.focus();
+
         }
+
         function closeLightbox() {
+
           if (lightbox.getAttribute("aria-hidden") === "true") return;
+
           lightbox.classList.remove("open");
+
           lightbox.setAttribute("aria-hidden", "true");
+
           body.classList.remove("lightbox-open");
+
           setTimeout(() => {
+
             if (lightbox.getAttribute("aria-hidden") === "true")
+
               lightbox.style.display = "none";
+
           }, 230);
+
           if (previousFocus && typeof previousFocus.focus === "function")
+
             previousFocus.focus();
+
         }
+
         photos.forEach((photo) => {
+
           photo.style.cursor = "zoom-in";
+
           photo.addEventListener("click", () => openLightbox(photo));
+
           photo.addEventListener("keydown", (e) => {
+
             if (e.key === "Enter" || e.key === " ") {
+
               e.preventDefault();
+
               openLightbox(photo);
+
             }
+
           });
+
           photo.tabIndex = 0;
-        });
-        closeBtn.addEventListener("click", closeLightbox);
-        prevBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          showPhoto(current - 1);
-        });
-        nextBtn.addEventListener("click", (e) => {
-          e.stopPropagation();
-          showPhoto(current + 1);
-        });
-        lightbox.addEventListener("click", (e) => {
-          if (e.target === lightbox) closeLightbox();
-        });
-        largeImg.addEventListener("click", (e) => e.stopPropagation());
-        document.addEventListener("keydown", (e) => {
-          if (lightbox.getAttribute("aria-hidden") === "true") return;
-          if (e.key === "Escape") closeLightbox();
-          if (e.key === "ArrowLeft") showPhoto(current - 1);
-          if (e.key === "ArrowRight") showPhoto(current + 1);
+
         });
 
-        // Tombol kembali ke atas dan progres scroll
-        const progress = document.createElement("div");
-        progress.className = "scroll-progress";
-        Object.assign(progress.style, {
-          position: "fixed",
-          top: "0",
-          left: "0",
-          height: "4px",
-          width: "0",
-          background: "linear-gradient(90deg,#6366f1,#22c55e)",
-          zIndex: "1000",
+        closeBtn.addEventListener("click", closeLightbox);
+
+        prevBtn.addEventListener("click", (e) => {
+
+          e.stopPropagation();
+
+          showPhoto(current - 1);
+
         });
+
+        nextBtn.addEventListener("click", (e) => {
+
+          e.stopPropagation();
+
+          showPhoto(current + 1);
+
+        });
+
+        lightbox.addEventListener("click", (e) => {
+
+          if (e.target === lightbox) closeLightbox();
+
+        });
+
+        largeImg.addEventListener("click", (e) => e.stopPropagation());
+
+        document.addEventListener("keydown", (e) => {
+
+          if (lightbox.getAttribute("aria-hidden") === "true") return;
+
+          if (e.key === "Escape") closeLightbox();
+
+          if (e.key === "ArrowLeft") showPhoto(current - 1);
+
+          if (e.key === "ArrowRight") showPhoto(current + 1);
+
+        });
+
+
+
+        // Tombol kembali ke atas dan progres scroll
+
+        const progress = document.createElement("div");
+
+        progress.className = "scroll-progress";
+
+        Object.assign(progress.style, {
+
+          position: "fixed",
+
+          top: "0",
+
+          left: "0",
+
+          height: "4px",
+
+          width: "0",
+
+          background: "linear-gradient(90deg,#6366f1,#22c55e)",
+
+          zIndex: "1000",
+
+        });
+
         body.appendChild(progress);
+
         function updateScroll() {
+
           const max = document.documentElement.scrollHeight - innerHeight;
+
           progress.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + "%";
+
           backTop.classList.toggle("visible", scrollY > 400);
+
         }
+
         addEventListener("scroll", updateScroll, { passive: true });
+
         updateScroll();
+
         backTop.addEventListener("click", () =>
+
           scrollTo({ top: 0, behavior: "smooth" }),
+
         );
+
       });
+
     </script>
+
   </body>
+
 </html>
